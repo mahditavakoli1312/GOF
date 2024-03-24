@@ -2,21 +2,29 @@ package com.example.gof
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gof.document_creator.DocumentCreator
-import com.example.gof.document_creator.impl.CVCreator
+import com.example.gof.singleton.Singleton
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var documentCreator: DocumentCreator
 
     @SuppressLint("MissingInflatedId", "UseCompatLoadingForDrawables", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        documentCreator = CVCreator(
-            "", "", "", "", 0, "", ""
-        )
+        ApplicationData.instance()
+        ApplicationData.instance()
+        ApplicationData.instance()
+        ApplicationData.instance()
+
+        val singleton = Singleton.getInstance()
+        singleton.setValue(12)
+        Log.d("singleton", "singleton1: ${singleton}")
+
+
+        val singleton2 = Singleton.getInstance()
+        Log.d("singleton", "singleton1: ${singleton2}")
     }
-
 }
