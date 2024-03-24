@@ -13,9 +13,14 @@ Behavioral: This type of design patterns provide solution for the better interac
 Creational Patterns : Abstract Factory , Factory , Prototype , Builder , Singleton. 
 
 this is related branches : 
+
   https://github.com/mahditavakoli1312/GOF/tree/abstract-factory
+  
   https://github.com/mahditavakoli1312/GOF/tree/factory
+  
   https://github.com/mahditavakoli1312/GOF/tree/prototype
+  
   https://github.com/mahditavakoli1312/GOF/tree/builder
+  
   https://github.com/mahditavakoli1312/GOF/tree/singleton
   
