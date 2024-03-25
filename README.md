@@ -1,7 +1,7 @@
 # GOF
 In this repository we will implement GOF design patterns in Andfroid platform.
 
-for more practice you can using below repository and find used gof design pattern in this open source project :
+for more practice you can using below repository and find used gof design patterns in this open source project :
 
 https://github.com/mahditavakoli1312/finding_gof_patterns/tree/master
 
