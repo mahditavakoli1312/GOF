@@ -5,7 +5,7 @@ for more practice you can using below repository and find used gof design patter
 
 https://github.com/mahditavakoli1312/finding_gof_patterns/tree/master
 
-GoF Design Patterns are divided into three categories:
+GOF Design Patterns are divided into three categories:
 
 Creational: The design patterns that deal with the creation of an object.
 
