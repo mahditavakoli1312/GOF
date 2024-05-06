@@ -1,0 +1,86 @@
+// region semantic concepts
+
+interface BuildConfigAttrsFactory {
+    val BASE_URL: String
+    fun createVersion(): BuildConfigVersion
+}
+
+interface BuildConfigVersion {
+    val versionName: String
+    val versionCode: String
+}
+
+// endregion semantic concepts
+
+// region polymorphism for BuildConfigVersion
+object DebugBuildConfigVersion : BuildConfigVersion {
+    override val versionName: String
+        get() = "debugVersion"
+    override val versionCode: String
+        get() = "1.0.0"
+}
+
+object ReleaseBuildConfigVersion : BuildConfigVersion {
+    override val versionName: String
+        get() = "release Version"
+    override val versionCode: String
+        get() = "5.6.0"
+}
+// region polymorphism for BuildConfigVersion
+
+// region polymorphism for BuildConfigAttrs
+class DebugBuildConfigFactory private constructor() : BuildConfigAttrsFactory {
+    companion object {
+        private var buildConfigFactoryInstance: BuildConfigAttrsFactory? = null
+        fun getInstance(): BuildConfigAttrsFactory {
+            if (buildConfigFactoryInstance == null) {
+                synchronized(this) {
+                    if (buildConfigFactoryInstance == null)
+                        buildConfigFactoryInstance = DebugBuildConfigFactory()
+                }
+            }
+            return buildConfigFactoryInstance!!
+        }
+    }
+
+    override val BASE_URL: String
+        get() = "debug url"
+
+    override fun createVersion(): BuildConfigVersion {
+        return DebugBuildConfigVersion
+    }
+}
+
+class ReleaseBuildConfigFactory private constructor() : BuildConfigAttrsFactory {
+    companion object {
+        private var buildConfigFactoryInstance: BuildConfigAttrsFactory? = null
+        fun getInstance(): BuildConfigAttrsFactory {
+            if (buildConfigFactoryInstance == null) {
+                synchronized(this) {
+                    if (buildConfigFactoryInstance == null)
+                        buildConfigFactoryInstance = ReleaseBuildConfigFactory()
+                }
+            }
+            return buildConfigFactoryInstance!!
+        }
+    }
+
+    override val BASE_URL: String
+        get() = "release url"
+
+    override fun createVersion(): BuildConfigVersion {
+        return ReleaseBuildConfigVersion
+    }
+}
+// endregion polymorphism for BuildConfigAttrs
+
+class  Client {
+    lateinit var buildConfig : BuildConfigAttrsFactory
+
+    fun client(){
+        buildConfig = ReleaseBuildConfigFactory.getInstance()
+        /*
+        * using build config
+        */
+    }
+}
